@@ -1,0 +1,40 @@
+﻿@using System.Data
+@model DataTable
+
+@{
+    ViewData["Title"] = "Home Page and fetching data from Api";
+
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome To Dietitian Website</h1>
+    @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
+</div>
+<form asp-action="Index">
+<div class="form-group">
+ <label for="Question" class="control-label">Qestion</label>
+<input type="question" id="question" name="question" class="form-control" />
+    <input type="submit" value="Index(question)" class="btn btn-primary" />
+</div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayName("name")</th>
+        
+            <th>@Html.DisplayName("calories")</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(DataRow row in Model.Rows)
+        {
+            <tr>
+                <td>@row["name"]</td>
+                <td>@row["calories"]</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

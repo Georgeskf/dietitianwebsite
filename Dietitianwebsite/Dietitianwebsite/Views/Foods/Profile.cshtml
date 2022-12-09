@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Dietitianwebsite.Models.Food>
+
+<h2>
+    Today's macros
+</h2>
+@{
+    var kcal = 0;
+    var prot = 0;
+    var carbs = 0;
+    var fat = 0;
+}
+@foreach (var item in Model)
+{
+    kcal += @item.Kcal;
+    prot += @item.Protein;
+    carbs += @item.Carbs;
+    fat += @item.Fat;
+}
+
+<div id="LoggedFood">
+    <label>Calorie intake</label>
+    <div id="kcal" style="height:20px; background-color:green"></div>
+    <div class="row">
+        <div class="col-4">
+            <label>Protein</label>
+        </div>
+        <div class="col-4">
+            <label>Carbs</label>
+        </div>
+        <div class="col-4">
+            <label>Fat</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div id="prot" style="height:20px; background-color:red; width:@prot%"></div>
+        </div>
+        <div class="col-4">
+            <div id="carbs" style="height:20px; background-color:blue; width:@carbs%"></div>
+        </div>
+        <div class="col-4">
+            <div id="fat" style="height:20px; background-color:yellow; width:@fat%"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <label>@prot g of protein</label>
+        </div>
+        <div class="col-4">
+            <label>@carbs g of carbohydrates</label>
+        </div>
+        <div class="col-4">
+            <label>@fat g of fat</label>
+        </div>
+    </div>
+</div>
+
+<label>Log your food by clicking </label>&nbsp<a asp-controller="Foods" asp-action="LogFood"><div class="btn btn-primary">Log food</div></a>
+<br />
+<label class="mt-3">Edit your food by clicking</label>&nbsp<a asp-controller="Foods" asp-action="editFood"><div class="btn btn-outline-secondary">Edit food</div></a>

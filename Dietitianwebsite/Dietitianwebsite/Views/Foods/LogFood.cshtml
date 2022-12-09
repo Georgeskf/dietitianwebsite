@@ -1,0 +1,103 @@
+﻿@model Dietitianwebsite.Models.Food
+
+<h4>Food</h4>
+<hr />
+<div class="row">
+    <label class="mb-3 mt-3">You can either type the food name for a default weight of 100g or type the weight as "xg 'food name'"</label>
+    <div class="col-md-4">
+        <form>
+            <div class="form-group">
+                <label name="query" class="control-label">Enter food name</label>
+                <input name="query" type="text" id="query" class="form-control" />
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="button" onclick="getFoodFromApi()" value="Log" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row d-none">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" id="foodName" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kcal" class="control-label"></label>
+                <input asp-for="Kcal" id="foodKcal" class="form-control" />
+                <span asp-validation-for="Kcal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Protein" class="control-label"></label>
+                <input asp-for="Protein" id="foodProt" class="form-control" />
+                <span asp-validation-for="Protein" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Carbs" class="control-label"></label>
+                <input asp-for="Carbs" id="foodCarbs" class="form-control" />
+                <span asp-validation-for="Carbs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fat" class="control-label"></label>
+                <input asp-for="Fat" id="foodFat" class="form-control" />
+                <span asp-validation-for="Fat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fat" class="control-label"></label>
+                <input asp-for="Fat" id="foodFat" class="form-control" />
+                <span asp-validation-for="Fat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" id="submitFood" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Profile">Back to Profile</a>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+
+    }
+   
+
+    }
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        
+        function getFoodFromApi(){
+            var query = document.getElementById('query').value;
+            $.ajax({
+                method: 'GET',
+                url: 'https://api.api-ninjas.com/v1/nutrition?query=' + query,
+                    headers: { 'X-Api-Key': 'QEDtmpudoW4kDf4CPsTcZQ==bhe9XBX1AvxuoDee' },
+                contentType: 'application/json',
+                beforeSend: function () {
+                },
+                success: function (result) {
+                        var foodName = document.getElementById("foodName");
+                        foodName.value = result[0].name;
+                        var foodKcal = document.getElementById("foodKcal");
+                        foodKcal.value = Math.round(result[0].calories);
+                        var foodProt = document.getElementById("foodProt");
+                        foodProt.value = Math.round(result[0].protein_g);
+                        var foodCarbs = document.getElementById("foodCarbs");
+                        foodCarbs.value = Math.round(result[0].carbohydrates_total_g);
+                        var foodFat = document.getElementById("foodFat");
+                        foodFat.value = Math.round(result[0].fat_total_g);
+                        var submitFood = document.getElementById("submitFood");
+                        submitFood.click();
+                },
+                error: function ajaxError(jqXHR) {
+                    console.error('Error: ', jqXHR.responseText);
+                }
+            })
+        }
+    </script>
