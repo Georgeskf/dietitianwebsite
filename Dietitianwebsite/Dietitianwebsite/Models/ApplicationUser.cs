@@ -8,6 +8,7 @@ namespace Dietitianwebsite.Models
     public class ApplicationUser : IdentityUser
     {
         public virtual ICollection<Food> Foods { get; set; }
+        public virtual ICollection<Programdiet> Programdiets { get; set; }
 
 
     }

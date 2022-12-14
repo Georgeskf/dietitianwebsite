@@ -15,6 +15,7 @@ namespace Dietitianwebsite.Data
 
         public DbSet<Dietitianwebsite.Models.Food> Food { get; set; }
         public DbSet<Dietitianwebsite.Models.ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<Dietitianwebsite.Models.Programdiet> Program { get; set; }
 
     }
 }

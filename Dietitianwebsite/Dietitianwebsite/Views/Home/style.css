@@ -1,0 +1,10 @@
+﻿namespace Dietitianwebsite.Views.Home
+{
+    public class style
+    {
+        .text-center {
+    background-color: blue;
+    text-align: center!important;
+}
+    }
+}

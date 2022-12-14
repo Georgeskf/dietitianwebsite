@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace nuttrionApp.Controllers
 {
+    [Authorize]
     public class FoodsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -68,6 +69,10 @@ namespace nuttrionApp.Controllers
             var userid = UserManager.GetUserId(HttpContext.User);
             var data = await _context.Food.Where(q => q.userid == userid).ToListAsync();
             return View(data);
+        }
+        public async Task<IActionResult> BMI_calculator()
+        {
+            return View();
         }
         public IActionResult LogFood()
         {

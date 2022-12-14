@@ -1,8 +1,12 @@
+using CloudinaryDotNet;
 using Dietitianwebsite.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
+
 var builder = WebApplication.CreateBuilder(args);
+
+
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -15,7 +19,22 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddSwaggerGen();  
+builder.Services.AddSwaggerGen();
+
+
+builder.Services.AddAuthentication()
+                .AddGoogle(options => {
+                    IConfigurationSection googleAuthNSection = builder.Configuration.GetSection("Authentication:Google");
+                    options.ClientId = "176533284849-fftkhhapvlj0rlhkv22rv96lgda3f3fr.apps.googleusercontent.com";
+                    options.ClientSecret = "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";
+                    options.CallbackPath = "/Home";
+
+                })
+                .AddFacebook(options => {
+                    options.AppId = "534920235160329";
+                    options.AppSecret = "164db42e38bc1e11cb07aca7ce0ddbf4";
+
+                });
 
 var app = builder.Build();
 

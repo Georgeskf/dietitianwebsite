@@ -17,7 +17,7 @@ namespace Dietitianwebsite.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.9")
+                .HasAnnotation("ProductVersion", "6.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -54,6 +54,52 @@ namespace Dietitianwebsite.Data.Migrations
                     b.HasIndex("userid");
 
                     b.ToTable("Food");
+                });
+
+            modelBuilder.Entity("Dietitianwebsite.Models.Programdiet", b =>
+                {
+                    b.Property<int>("ProgramId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProgramId"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("breakfast")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("dinner")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lunch")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("userid")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ProgramId");
+
+                    b.HasIndex("userid");
+
+                    b.ToTable("Program");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -282,6 +328,17 @@ namespace Dietitianwebsite.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Dietitianwebsite.Models.Programdiet", b =>
+                {
+                    b.HasOne("Dietitianwebsite.Models.ApplicationUser", "User")
+                        .WithMany("Programdiets")
+                        .HasForeignKey("userid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -336,6 +393,8 @@ namespace Dietitianwebsite.Data.Migrations
             modelBuilder.Entity("Dietitianwebsite.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Foods");
+
+                    b.Navigation("Programdiets");
                 });
 #pragma warning restore 612, 618
         }

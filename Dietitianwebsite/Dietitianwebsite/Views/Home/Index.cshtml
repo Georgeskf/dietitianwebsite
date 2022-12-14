@@ -1,40 +1,32 @@
 ﻿@using System.Data
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @model DataTable
 
 @{
     ViewData["Title"] = "Home Page and fetching data from Api";
 
 }
-
-<div class="text-center">
+<html
+<div class="text-center home">
     <h1 class="display-4">Welcome To Dietitian Website</h1>
     @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
 </div>
-<form asp-action="Index">
-<div class="form-group">
- <label for="Question" class="control-label">Qestion</label>
-<input type="question" id="question" name="question" class="form-control" />
-    <input type="submit" value="Index(question)" class="btn btn-primary" />
-</div>
-</form>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayName("name")</th>
+<div   style="display:flex">
+<div  style="background-color:aliceblue;width:400px;margin-left:250px; opacity:0.8; " class="text-center float-child ">
+    <h2>Your Best Health Monitoring</h2>
+    <br /><br />
         
-            <th>@Html.DisplayName("calories")</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(DataRow row in Model.Rows)
-        {
-            <tr>
-                <td>@row["name"]</td>
-                <td>@row["calories"]</td>
-            </tr>
-        }
-    </tbody>
-</table>
+            <a asp-controller="Foods" asp-action="LogFood"><div style="background-color:green; width:250px; border-width:0px;" class="btn btn-primary">Calories Calculation</div></a><br />
+        
+        <a asp-controller="Foods" asp-action="BMI_calculator"><div style="background-color:green; width:250px;border-width:0px; margin-top:15px; "class="btn btn-primary">BMI</div></a><br />
+     <a asp-controller="programdiets" asp-action="Index"><div style="background-color:green; width:250px;border-width:0px; margin-top:15px; "class="btn btn-primary">Diet Programs</div></a><br />
+<br /><br />
+</div>
+<div style="background-image:url('https://res.cloudinary.com/danduomvk/image/upload/v1670973424/GridPost-scaled-e1641502134657_xqw6ka.jpg')  ;width:400px;margin-left:50px;  " class="text-center  float-child">
+</div>
+</div>
+
 
 

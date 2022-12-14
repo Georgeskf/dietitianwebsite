@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qntFTrWMkQtATDEVBLPgPG/Sw4WbWXhEmXKKGflZgN0=",
+  "Hash": "CksOXryd30qpH3T4+UUoOLx1y3qxa1xO6rUR6x6c8D4=",
   "Source": "Dietitianwebsite",
   "BasePath": "_content/Dietitianwebsite",
   "Mode": "Default",
@@ -1071,6 +1071,23 @@
       "OriginalItemSpec": "C:\\Users\\GeorgesKfoury\\source\\repos\\Dietitianwebsite\\Dietitianwebsite\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Dietitianwebsite.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\GeorgesKfoury\\source\\repos\\Dietitianwebsite\\Dietitianwebsite\\wwwroot\\css\\background2.jpg",
+      "SourceId": "Dietitianwebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\GeorgesKfoury\\source\\repos\\Dietitianwebsite\\Dietitianwebsite\\wwwroot\\",
+      "BasePath": "_content/Dietitianwebsite",
+      "RelativePath": "css/background2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\background2.jpg"
+    },
+    {
       "Identity": "C:\\Users\\GeorgesKfoury\\source\\repos\\Dietitianwebsite\\Dietitianwebsite\\wwwroot\\css\\site.css",
       "SourceId": "Dietitianwebsite",
       "SourceType": "Discovered",
@@ -1103,6 +1120,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\GeorgesKfoury\\source\\repos\\Dietitianwebsite\\Dietitianwebsite\\wwwroot\\js\\bmi.js",
+      "SourceId": "Dietitianwebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\GeorgesKfoury\\source\\repos\\Dietitianwebsite\\Dietitianwebsite\\wwwroot\\",
+      "BasePath": "_content/Dietitianwebsite",
+      "RelativePath": "js/bmi.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\bmi.js"
     },
     {
       "Identity": "C:\\Users\\GeorgesKfoury\\source\\repos\\Dietitianwebsite\\Dietitianwebsite\\wwwroot\\js\\site.js",

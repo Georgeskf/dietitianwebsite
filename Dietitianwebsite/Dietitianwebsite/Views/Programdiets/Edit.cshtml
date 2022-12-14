@@ -1,0 +1,96 @@
+﻿@model Dietitianwebsite.Models.Programdiet
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Programdiet</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input id="fileupload" type="file" onclick="uploadFile()" name="fileupload" />
+            <input type="hidden" name="MAX_FILE_SIZE" value="30000">
+
+            <div class="form-group">
+                <label asp-for="image" class="control-label"></label>
+                <input id="image" asp-for="image" class="form-control" />
+                <span asp-validation-for="image" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="ProgramId" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="type" class="control-label"></label>
+                <input asp-for="type" class="form-control" />
+                <span asp-validation-for="type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="description" class="control-label"></label>
+                <input asp-for="description" class="form-control" />
+                <span asp-validation-for="description" class="text-danger"></span>
+            </div>
+         
+            <div class="form-group">
+                <label asp-for="breakfast" class="control-label"></label>
+                <input asp-for="breakfast" class="form-control" />
+                <span asp-validation-for="breakfast" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="lunch" class="control-label"></label>
+                <input asp-for="lunch" class="form-control" />
+                <span asp-validation-for="lunch" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dinner" class="control-label"></label>
+                <input asp-for="dinner" class="form-control" />
+                <span asp-validation-for="dinner" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input style="background-color:green; border-width:0px; margin-top:15px" type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<br />
+<br />
+<br />
+<br />
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+
+        function uploadFile() {
+            let formData = new FormData();
+            formData.append("file", fileupload.files[0]);
+
+            var image = document.getElementById("image");
+            var inputName = document.getElementById('fileupload');
+            fileupload.addEventListener("change", function () {
+                const reader = new FileReader();
+                var image = document.getElementById("image");
+
+                reader.addEventListener("load", () => {
+                    const uploaded_image = reader.result;
+                    console.log(uploaded_image)
+                    image.value = uploaded_image
+                });
+                reader.readAsDataURL(this.files[0]);
+            });
+
+
+        }
+    </script>
